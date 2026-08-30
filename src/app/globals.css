@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --paper: 245 246 248;
+    --surface: 255 255 255;
+    --raised: 238 240 244;
+    --line: 221 225 232;
+    --ink: 12 17 22;
+    --muted: 90 100 114;
+    --accent: 110 86 207;
+    --accent-ink: 255 255 255;
+    --pos: 18 128 92;
+    --neg: 194 65 60;
+  }
+
+  .dark {
+    --paper: 10 13 18;
+    --surface: 16 20 27;
+    --raised: 23 28 37;
+    --line: 35 42 53;
+    --ink: 231 236 243;
+    --muted: 138 148 166;
+    --accent: 140 124 255;
+    --accent-ink: 12 17 22;
+    --pos: 63 185 80;
+    --neg: 229 83 75;
+  }
+
+  * {
+    @apply border-line;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-paper text-ink font-sans antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display tracking-[-0.02em];
+  }
+
+  ::selection {
+    @apply bg-accent/25;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-accent ring-offset-2 ring-offset-paper;
+  }
+}
+
+@layer components {
+  /* Eyebrow labels: monospaced, uppercase — the instrument-panel voice. */
+  .eyebrow {
+    @apply font-mono text-eyebrow uppercase text-muted;
+  }
+
+  .card {
+    @apply rounded-card border border-line bg-surface shadow-card;
+  }
+
+  .hairline {
+    @apply h-px w-full bg-line;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
